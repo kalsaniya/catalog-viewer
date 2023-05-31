@@ -7,8 +7,6 @@ import {
   NavigateNext,
 } from "@mui/icons-material";
 
-import "./App.css";
-
 const CatalogViewer = () => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [isSlideshowActive, setSlideshowActive] = useState(false);
