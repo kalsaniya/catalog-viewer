@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import { Box, Button, Grid, IconButton, Typography } from "@mui/material";
 import {
   PlayArrow,
@@ -23,14 +23,14 @@ const CatalogViewer = () => {
     {
       id: 2,
       title: "Title 2",
-      url: "https://media-cdn.tripadvisor.com/media/photo-s/1a/4a/49/08/view-from-the-cafe.jpg",
+      url: "https://media.tacdn.com/media/attractions-splice-spp-674x446/07/2a/66/bc.jpg",
       details:
         "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ullam, soluta. Velit, nihil atque. Dolores hic voluptatem quo debitis quidem ut architecto aliquam totam non veritatis veniam, eius praesentium minus ipsa similique voluptatibus ducimus neque aspernatur.",
     },
     {
       id: 3,
       title: "Title 3",
-      url: "https://rishikeshdaytour.com/blog/wp-content/uploads/2019/03/13-Experiences-You-Should-ive-in-Rishikesh.jpg",
+      url: "https://media.istockphoto.com/id/1302237529/photo/stunning-view-of-the-ganga-river-embankment-with-the-lakshman-jhula-bridge-and-tera-manzil.jpg?s=612x612&w=0&k=20&c=LQ3Pnaegh-UXQ08ZJB_JUNHHW7333xeQUUbT8kDccEo=",
       details:
         "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ullam, soluta. Velit, nihil atque. Dolores hic voluptatem quo debitis quidem ut architecto aliquam totam non veritatis veniam, eius praesentium minus ipsa similique voluptatibus ducimus neque aspernatur.",
     },
@@ -72,41 +72,32 @@ const CatalogViewer = () => {
   };
 
   return (
-    <Box>
+    <Box p={2}>
       <Grid container>
-        <Grid
-          item
-          xs={10}
-          display="flex"
-          justifyContent="center"
-          margin="auto"
-          gap="5rem"
-        >
+        <Grid item xs={12} sm={6} md={6} lg={6} xl={6}>
           <Box
             display="flex"
             justifyContent="center"
             alignItems="center"
-            height="80vh"
+            minHeight={{ xs: "40vh", sm: "40vh", md: "40vh" }}
           >
             <img
               src={images[currentImageIndex].url}
               alt={images[currentImageIndex].details}
-              width={600}
-              height={400}
-              style={{ borderRadius: "30px" }}
+              style={{
+                width: "100%",
+                height: "auto",
+                borderRadius: "30px",
+                textAlign: "center",
+              }}
             />
           </Box>
-          <Typography variant="body1" marginTop="3rem" gutterBottom>
-            <h1>{images[currentImageIndex].title}</h1>
-            {images[currentImageIndex].details}
-          </Typography>
-        </Grid>
-        <Grid item xs={10} display="flex" margin="auto">
+          {/* <Grid item xs={12} sm={2} md={2} lg={2} xl={2}> */}
           <Box
             display="flex"
-            width={600}
             justifyContent="center"
             alignItems="center"
+            // ml={{ xs: 0, sm: 25 }}
           >
             <Button variant="contained" onClick={handlePrevious}>
               <NavigateBefore />
@@ -124,8 +115,8 @@ const CatalogViewer = () => {
                 <img
                   src={image.url}
                   alt={image.details}
-                  width="80px"
-                  height="80px"
+                  width="50px"
+                  height="50px"
                 />
               </IconButton>
             ))}
@@ -136,15 +127,27 @@ const CatalogViewer = () => {
           <Box
             display="flex"
             justifyContent="center"
-            border="1px solid #1976D2"
-            borderRadius="100%"
             alignItems="center"
-            margin="auto"
+            // ml={{ xs: 0, sm: 25 }}
           >
             <IconButton onClick={handleSlideshowToggle}>
               {isSlideshowActive ? <Pause /> : <PlayArrow />}
             </IconButton>
           </Box>
+          {/* </Grid> */}
+        </Grid>
+        <Grid item xs={12} sm={6} md={6} lg={6} xl={6}>
+          <Typography
+            variant="body1"
+            display="flex"
+            justifyContent="center"
+            flexDirection="column"
+            minHeight={{ xs: "40vh", sm: "40vh", md: "40vh" }}
+            marginLeft={{ xs: "16px", sm: "16px", md: "16px" }}
+          >
+            <h1>{images[currentImageIndex].title}</h1>
+            {images[currentImageIndex].details}
+          </Typography>
         </Grid>
       </Grid>
     </Box>
